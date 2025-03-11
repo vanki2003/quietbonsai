@@ -3,208 +3,319 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name | Data Analyst in Malta</title>
+    <title>Ivan Iliev | Data Analyst & BI Specialist in Malta</title>
     <style>
         :root {
-            --primary: #2a6496;
+            --primary: #0061ff;
+            --primary-light: #60efff;
             --secondary: #f8f9fa;
-            --dark: #343a40;
+            --dark: #212529;
             --light: #ffffff;
-            --accent: #5cb85c;
+            --accent: #4cc9f0;
+            --gray-light: #f0f2f5;
+            --gray: #dee2e6;
+            --text: #495057;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
         }
         
         body {
             line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--secondary);
+            color: var(--text);
+            background-color: var(--gray-light);
+            font-weight: 400;
         }
         
         header {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: var(--light);
-            padding: 2rem 0;
+            padding: 3rem 0;
             text-align: center;
         }
         
         nav {
-            background-color: var(--dark);
+            background-color: var(--light);
             padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         
         nav ul {
             display: flex;
             justify-content: center;
             list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         nav ul li {
-            margin: 0 1rem;
+            margin: 0 1.5rem;
         }
         
         nav ul li a {
-            color: var(--light);
+            color: var(--dark);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         nav ul li a:hover {
-            color: var(--accent);
+            color: var(--primary);
         }
         
         section {
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
         
         h1, h2, h3 {
             margin-bottom: 1rem;
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        section > p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
         }
         
         .hero {
-            text-align: center;
+            text-align: left;
             background-color: var(--light);
-            border-radius: 8px;
-            padding: 3rem;
+            border-radius: 16px;
+            padding: 4rem;
             margin-top: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
         
         .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
         }
         
         .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+            color: var(--text);
+            font-weight: 400;
         }
         
         .cta-button {
             display: inline-block;
-            background-color: var(--accent);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: var(--light);
-            padding: 0.8rem 2rem;
-            border-radius: 4px;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .cta-button:hover {
-            background-color: #4a9e4a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4);
         }
         
-        .services {
-            background-color: var(--light);
-            border-radius: 8px;
-            padding: 3rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .container {
+            border-radius: 16px;
+            padding: 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
         
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
         }
         
         .service-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 1.5rem;
-            transition: transform 0.3s;
+            border-radius: 12px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+            background: var(--light);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--primary-light));
+            transition: all 0.3s;
+            z-index: -1;
         }
         
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-card:hover::before {
+            width: 100%;
+            opacity: 0.05;
         }
         
         .service-card h3 {
-            color: var(--primary);
-        }
-        
-        .portfolio {
-            background-color: var(--light);
-            border-radius: 8px;
-            padding: 3rem;
-            margin-top: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .portfolio-item {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .portfolio-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .portfolio-content {
-            padding: 1.5rem;
-            background-color: var(--light);
-        }
-        
-        .pricing {
-            background-color: var(--light);
-            border-radius: 8px;
-            padding: 3rem;
-            margin-top: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .pricing-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        .pricing-card h3 {
             color: var(--primary);
             font-size: 1.5rem;
             margin-bottom: 1rem;
         }
         
-        .price {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 1.5rem;
+        .service-card p {
+            color: var(--text);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .portfolio-item {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            background: var(--light);
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            object-position: center;
+            transition: all 0.5s;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-content {
+            padding: 2rem;
+        }
+        
+        .portfolio-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
             color: var(--dark);
+        }
+        
+        .portfolio-content p {
+            color: var(--text);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .packages-card {
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+            position: relative;
+            background: var(--light);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .packages-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .packages-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--light);
+            text-align: center;
+        }
+        
+        .packages-card h3 {
+            color: var(--light);
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0;
+            color: var(--light);
+        }
+        
+        .packages-body {
+            padding: 2rem;
         }
         
         .feature-list {
@@ -213,146 +324,246 @@
         }
         
         .feature-list li {
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
             position: relative;
+            color: var(--text);
         }
         
         .feature-list li::before {
             content: "✓";
-            color: var(--accent);
+            color: var(--primary);
+            font-weight: bold;
             position: absolute;
             left: 0;
         }
         
         .about {
-            background-color: var(--light);
-            border-radius: 8px;
-            padding: 3rem;
-            margin-top: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3.5rem;
             align-items: center;
         }
         
         .about-image {
-            flex: 1;
-            min-width: 300px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         
         .about-image img {
             width: 100%;
-            border-radius: 8px;
+            display: block;
+            transition: all 0.5s;
         }
         
-        .about-content {
-            flex: 2;
-            min-width: 300px;
+        .about-image:hover img {
+            transform: scale(1.05);
         }
         
-        .contact {
-            background-color: var(--light);
-            border-radius: 8px;
-            padding: 3rem;
-            margin-top: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .about-content h2 {
+            margin-top: 0;
+        }
+        
+        .about-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        
+        .skills {
+            margin-top: 2.5rem;
+        }
+        
+        .skills h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .skill-tag {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
         
         .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 700px;
+            margin: 3rem auto 0;
         }
         
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
         
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             font-weight: 500;
+            color: var(--dark);
+            font-size: 1rem;
         }
         
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 1rem;
+            border: 1px solid var(--gray);
+            border-radius: 8px;
+            background-color: var(--light);
+            transition: all 0.3s;
+            font-size: 1rem;
+            color: var(--dark);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
         }
         
         .form-group textarea {
-            height: 150px;
-        }
-        
-        .submit-button {
-            background-color: var(--primary);
-            color: var(--light);
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        
-        .submit-button:hover {
-            background-color: #1e4f76;
+            height: 180px;
+            resize: vertical;
         }
         
         footer {
             background-color: var(--dark);
             color: var(--light);
             text-align: center;
-            padding: 2rem 0;
-            margin-top: 2rem;
+            padding: 3rem 0;
+            margin-top: 5rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
         
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin: 1rem 0;
+            gap: 1.5rem;
+            margin: 2rem 0;
         }
         
         .social-links a {
             color: var(--light);
             font-size: 1.5rem;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .social-links a:hover {
-            color: var(--accent);
+            color: var(--primary);
+            background-color: var(--light);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .about {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .about-image {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
         }
         
         @media (max-width: 768px) {
+            section {
+                padding: 4rem 1.5rem;
+            }
+            
+            .container, .hero {
+                padding: 2.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero {
+                padding: 2rem;
+            }
+            
             .hero h1 {
                 font-size: 2rem;
             }
             
-            .hero p {
-                font-size: 1rem;
+            .container {
+                padding: 2rem;
             }
             
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            nav ul li {
-                margin: 0.5rem 0;
+            .cta-button {
+                width: 100%;
+                text-align: center;
             }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Your Name</h1>
-            <p>Data Analyst & Power BI Specialist | Malta</p>
+            <h1>Ivan Iliev</h1>
+            <h3>Data Analyst & Business Intelligence Specialist | Malta</h3>
         </div>
     </header>
     
@@ -361,7 +572,7 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#packages">Packages</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -369,93 +580,105 @@
     
     <section id="home">
         <div class="hero">
-            <h1>Transforming Timesheet Data into Business Intelligence</h1>
-            <p>I help professional services firms in Malta optimize their billing, resource allocation, and project profitability through custom Power BI analytics solutions.</p>
-            <a href="#contact" class="cta-button">Get Started</a>
+            <h1>Transforming Data into Business Intelligence</h1>
+            <p>I help businesses in Malta optimize their operations and decision-making through custom data analytics and Power BI solutions.</p>
+            <a href="#services" class="cta-button">View More</a>
         </div>
     </section>
     
     <section id="services">
-        <div class="services">
-            <h2>Services</h2>
-            <p>Specialized data analytics solutions for businesses in Malta</p>
+        <h2>Services</h2>
+        <p>Comprehensive data analytics solutions for businesses in Malta</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Data Analysis</h3>
+                <p>Extract meaningful insights from your data to identify trends, patterns, and opportunities for business growth. Custom analysis tailored to your specific business questions and goals.</p>
+            </div>
             
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Timesheet Analytics</h3>
-                    <p>Transform your timesheet data into actionable insights. Track billable hours, analyze employee productivity, and optimize resource allocation with custom Power BI dashboards.</p>
-                </div>
-                
-                <div class="service-card">
-                    <h3>Billing Optimization</h3>
-                    <p>Identify billing inefficiencies, track prepaid vs. billed amounts, and improve cash flow with comprehensive billing analytics tailored to your business needs.</p>
-                </div>
-                
-                <div class="service-card">
-                    <h3>Resource Planning</h3>
-                    <p>Make data-driven staffing decisions with employee utilization tracking, capacity planning tools, and workload forecasting dashboards.</p>
-                </div>
-                
-                <div class="service-card">
-                    <h3>Project Profitability</h3>
-                    <p>Gain clear visibility into the financial performance of your projects with detailed cost tracking, margin analysis, and profitability forecasting.</p>
-                </div>
-                
-                <div class="service-card">
-                    <h3>Data Pipeline Automation</h3>
-                    <p>Streamline your analytics workflow with automated data extraction, transformation, and loading using Python and SQL.</p>
-                </div>
-                
-                <div class="service-card">
-                    <h3>Power BI Training</h3>
-                    <p>Empower your team with customized Power BI training sessions tailored to your specific business needs and data requirements.</p>
-                </div>
+            <div class="service-card">
+                <h3>Business Intelligence</h3>
+                <p>Transform raw data into actionable intelligence with custom Power BI solutions that provide clear visibility into your business performance and support strategic decision-making.</p>
+            </div>
+            
+            <div class="service-card">
+                <h3>Dashboard Development</h3>
+                <p>Create intuitive, interactive dashboards that visualize your key performance indicators and allow for real-time monitoring of business metrics across all departments.</p>
+            </div>
+            
+            <div class="service-card">
+                <h3>Financial Analytics</h3>
+                <p>Gain deeper insights into your financial performance with comprehensive analytics that track revenue, costs, margins, and profitability across products, services, and business units.</p>
             </div>
         </div>
     </section>
     
     <section id="portfolio">
-        <div class="portfolio">
-            <h2>Portfolio</h2>
-            <p>Examples of data analytics solutions I've created for clients</p>
+        <h2>Portfolio</h2>
+        <p>Examples of data analytics solutions I've created for clients</p>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="/api/placeholder/400/320" alt="Sales Performance Dashboard">
+                <div class="portfolio-content">
+                    <h3>Sales Performance Dashboard</h3>
+                    <p>A comprehensive Power BI solution that tracks sales metrics, customer acquisition costs, and revenue forecasting for a retail business.</p>
+                </div>
+            </div>
             
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="/api/placeholder/400/320" alt="Timesheet Analytics Dashboard">
-                    <div class="portfolio-content">
-                        <h3>Timesheet Analytics Dashboard</h3>
-                        <p>A comprehensive Power BI solution that tracks billable hours, employee productivity, and project allocation for a consulting firm.</p>
-                    </div>
+            <div class="portfolio-item">
+                <img src="/api/placeholder/400/320" alt="Financial Analytics Platform">
+                <div class="portfolio-content">
+                    <h3>Financial Analytics Platform</h3>
+                    <p>An interactive dashboard that monitors revenue streams, expense categories, and profitability metrics for a financial services firm.</p>
                 </div>
-                
-                <div class="portfolio-item">
-                    <img src="/api/placeholder/400/320" alt="Billing Performance Dashboard">
-                    <div class="portfolio-content">
-                        <h3>Billing Performance Dashboard</h3>
-                        <p>An interactive dashboard that monitors prepaid vs. billed amounts, invoice status, and payment trends for a legal firm.</p>
-                    </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <img src="/api/placeholder/400/320" alt="HR Analytics Dashboard">
+                <div class="portfolio-content">
+                    <h3>HR Analytics Dashboard</h3>
+                    <p>A detailed analysis tool that tracks employee performance, turnover rates, and department efficiency for an iGaming company.</p>
                 </div>
-                
-                <div class="portfolio-item">
-                    <img src="/api/placeholder/400/320" alt="Employee Utilization Tracker">
-                    <div class="portfolio-content">
-                        <h3>Employee Utilization Tracker</h3>
-                        <p>A detailed analysis tool that tracks employee utilization rates, bench time, and optimal resource allocation for an iGaming company.</p>
-                    </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <img src="/api/placeholder/400/320" alt="Supply Chain Optimization">
+                <div class="portfolio-content">
+                    <h3>Supply Chain Optimization</h3>
+                    <p>A data-driven solution for inventory management, order fulfillment tracking, and supply chain efficiency for a manufacturing company.</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <img src="/api/placeholder/400/320" alt="Marketing Campaign Analytics">
+                <div class="portfolio-content">
+                    <h3>Marketing Campaign Analytics</h3>
+                    <p>A comprehensive dashboard tracking campaign performance, customer engagement metrics, and ROI analysis for digital marketing initiatives.</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <img src="/api/placeholder/400/320" alt="Operational KPI Tracker">
+                <div class="portfolio-content">
+                    <h3>Operational KPI Tracker</h3>
+                    <p>Real-time monitoring of key performance indicators across multiple business functions for a hospitality client.</p>
                 </div>
             </div>
         </div>
     </section>
     
-    <section id="pricing">
-        <div class="pricing">
-            <h2>Project-Based Pricing</h2>
-            <p>Transparent, value-based pricing packages for your data analytics needs</p>
-            
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>Basic Package</h3>
-                    <div class="price">€500 - €800</div>
+    <section id="packages">
+        <h2>Packages</h2>
+        <p>Transparent, value-based packages packages for your data analytics needs</p>
+        
+        <div class="packages-grid">
+            <div class="packages-card">
+                <div class="packages-header">
+                    <h3>Premium Package</h3>
+                    
+                </div>
+                <div class="packages-body">
                     <ul class="feature-list">
                         <li>Single Power BI dashboard</li>
                         <li>Up to 2 data sources</li>
@@ -466,10 +689,14 @@
                     </ul>
                     <a href="#contact" class="cta-button">Get Started</a>
                 </div>
-                
-                <div class="pricing-card">
-                    <h3>Standard Package</h3>
-                    <div class="price">€1,000 - €2,500</div>
+            </div>
+            
+            <div class="packages-card">
+                <div class="packages-header">
+                    <h3>Pro Package</h3>
+                    
+                </div>
+                <div class="packages-body">
                     <ul class="feature-list">
                         <li>2-3 interconnected dashboards</li>
                         <li>Multiple data sources</li>
@@ -481,46 +708,41 @@
                     </ul>
                     <a href="#contact" class="cta-button">Get Started</a>
                 </div>
-                
-                <div class="pricing-card">
-                    <h3>Premium Package</h3>
-                    <div class="price">€3,000 - €5,000+</div>
-                    <ul class="feature-list">
-                        <li>Comprehensive analytics solution</li>
-                        <li>Python-based automated data pipeline</li>
-                        <li>4+ dashboards with drill-down</li>
-                        <li>Advanced analytics</li>
-                        <li>Custom visualizations and branding</li>
-                        <li>Detailed documentation</li>
-                        <li>2-hour training session</li>
-                        <li>90 days of support</li>
-                    </ul>
-                    <a href="#contact" class="cta-button">Get Started</a>
-                </div>
             </div>
         </div>
     </section>
     
     <section id="about">
-        <div class="about">
-            <div class="about-image">
-                <img src="/api/placeholder/400/320" alt="Your Profile Picture">
-            </div>
-            <div class="about-content">
-                <h2>About Me</h2>
-                <p>I'm a data analyst specializing in timesheet analytics and Power BI visualization based in Malta. With expertise in Python, SQL, and Power BI, I help professional services firms transform their operational data into actionable business intelligence.</p>
-                <p>My experience includes developing comprehensive timesheet and billing analytics solutions that have helped companies optimize their resource allocation, improve project profitability, and enhance billing efficiency.</p>
-                <p>I'm passionate about helping Maltese businesses leverage their data to make better decisions and improve operational efficiency.</p>
-                <div class="skills">
-                    <h3>Technical Skills</h3>
-                    <p>Python • SQL • Power BI • Data Visualization • ETL • Statistical Analysis • Dashboard Development • Data Pipelines</p>
+        <div class="container">
+            <div class="about">
+                <div class="about-image">
+                    <img src="/api/placeholder/400/320" alt="Your Profile Picture">
+                </div>
+                <div class="about-content">
+                    <h2>About Me</h2>
+                    <p>I'm a data analyst and business intelligence specialist based in Malta. With expertise in Python, SQL, and Power BI, I help businesses transform their data into actionable insights that drive strategic decision-making and operational excellence.</p>
+                    <p>My experience spans multiple industries including finance, retail, hospitality, and professional services. I specialize in developing comprehensive data analytics solutions that help companies understand their performance, identify growth opportunities, and optimize their operations.</p>
+                    <p>I'm passionate about helping Maltese businesses leverage the power of data to gain competitive advantages and achieve their business objectives.</p>
+                    <div class="skills">
+                        <h3>Technical Skills</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Power BI</span>
+                            <span class="skill-tag">Data Visualization</span>
+                            <span class="skill-tag">ETL</span>
+                            <span class="skill-tag">Statistical Analysis</span>
+                            <span class="skill-tag">Dashboard Development</span>
+                            <span class="skill-tag">Business Analytics</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
     
     <section id="contact">
-        <div class="contact">
+        <div class="container">
             <h2>Contact Me</h2>
             <p>Ready to transform your data into actionable insights? Let's discuss your project.</p>
             
@@ -545,19 +767,17 @@
                     <textarea id="message" required></textarea>
                 </div>
                 
-                <button type="submit" class="submit-button">Send Message</button>
+                <button type="submit" class="cta-button" onclick="window.location.href='mailto:ivan.iliev26@icloud.com'">Send Message</button>
             </div>
         </div>
     </section>
     
     <footer>
-        <div class="container">
+        <div class="footer-content">
             <div class="social-links">
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/ivaniliev26/"><i class="fab fa-linkedin"></i></a>
             </div>
-            <p>&copy; 2025 Your Name. All rights reserved.</p>
+            <p class="copyright">&copy; 2025 Ivan Iliev. All rights reserved.</p>
         </div>
     </footer>
 </body>
