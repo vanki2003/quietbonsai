@@ -1,758 +1,651 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ivan Iliev | Data Analyst & BI Specialist in Malta</title>
-    <style>
-        :root {
-            --primary: #0061ff;
-            --primary-light: #60efff;
-            --secondary: #f8f9fa;
-            --dark: #212529;
-            --light: #ffffff;
-            --accent: #4cc9f0;
-            --gray-light: #f0f2f5;
-            --gray: #dee2e6;
-            --text: #495057;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', 'Segoe UI', sans-serif;
-        }
-        
-        body {
-            line-height: 1.6;
-            color: var(--text);
-            background-color: var(--gray-light);
-            font-weight: 400;
-        }
-        
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: var(--light);
-            padding: 3rem 0;
-            text-align: center;
-        }
-        
-        nav {
-            background-color: var(--light);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        nav ul li {
-            margin: 0 1.5rem;
-        }
-        
-        nav ul li a {
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        nav ul li a:hover {
-            color: var(--primary);
-        }
-        
-        section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        h1, h2, h3 {
-            margin-bottom: 1rem;
-            font-weight: 700;
-            color: var(--dark);
-            line-height: 1.2;
-        }
-        
-        h1 {
-            font-size: 2.8rem;
-        }
-        
-        h2 {
-            font-size: 2.2rem;
-            position: relative;
-            padding-bottom: 1rem;
-            margin-bottom: 2rem;
-        }
-        
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: var(--primary);
-            border-radius: 2px;
-        }
-        
-        section > p {
-            font-size: 1.1rem;
-            margin-bottom: 2.5rem;
-            max-width: 700px;
-        }
-        
-        .hero {
-            text-align: left;
-            background-color: var(--light);
-            border-radius: 16px;
-            padding: 4rem;
-            margin-top: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            max-width: 800px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-        }
-        
-        .hero p {
-            font-size: 1.4rem;
-            max-width: 700px;
-            margin-bottom: 2.5rem;
-            color: var(--text);
-            font-weight: 400;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: var(--light);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4);
-        }
-        
-        .container {
-            border-radius: 16px;
-            padding: 4rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-        
-        .service-card {
-            border-radius: 12px;
-            padding: 2.5rem;
-            transition: all 0.3s;
-            background: var(--light);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--primary), var(--primary-light));
-            transition: all 0.3s;
-            z-index: -1;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-        
-        .service-card:hover::before {
-            width: 100%;
-            opacity: 0.05;
-        }
-        
-        .service-card h3 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .service-card p {
-            color: var(--text);
-            font-size: 1rem;
-            line-height: 1.7;
-        }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-        
-        .portfolio-item {
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            background: var(--light);
-        }
-        
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-        
-        .portfolio-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            object-position: center;
-            transition: all 0.5s;
-        }
-        
-        .portfolio-item:hover img {
-            transform: scale(1.05);
-        }
-        
-        .portfolio-content {
-            padding: 2rem;
-        }
-        
-        .portfolio-content h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-        
-        .portfolio-content p {
-            color: var(--text);
-            font-size: 1rem;
-            line-height: 1.7;
-        }
-        
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-        
-        .packages-card {
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.3s;
-            position: relative;
-            background: var(--light);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        
-        .packages-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-        
-        .packages-header {
-            padding: 2rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: var(--light);
-            text-align: center;
-        }
-        
-        .packages-card h3 {
-            color: var(--light);
-            font-size: 1.6rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0;
-            color: var(--light);
-        }
-        
-        .packages-body {
-            padding: 2rem;
-        }
-        
-        .feature-list {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-        
-        .feature-list li {
-            margin-bottom: 1rem;
-            padding-left: 2rem;
-            position: relative;
-            color: var(--text);
-        }
-        
-        .feature-list li::before {
-            content: "✓";
-            color: var(--primary);
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-        
-        .about {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3.5rem;
-            align-items: center;
-        }
-        
-        .about-image {
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        
-        .about-image img {
-            width: 100%;
-            display: block;
-            transition: all 0.5s;
-        }
-        
-        .about-image:hover img {
-            transform: scale(1.05);
-        }
-        
-        .about-content h2 {
-            margin-top: 0;
-        }
-        
-        .about-content p {
-            margin-bottom: 1.5rem;
-            color: var(--text);
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-        
-        .skills {
-            margin-top: 2.5rem;
-        }
-        
-        .skills h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-        
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        
-        .skill-tag {
-            background-color: rgba(67, 97, 238, 0.1);
-            color: var(--primary);
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-        
-        .contact-form {
-            max-width: 700px;
-            margin: 3rem auto 0;
-        }
-        
-        .form-group {
-            margin-bottom: 2rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.8rem;
-            font-weight: 500;
-            color: var(--dark);
-            font-size: 1rem;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid var(--gray);
-            border-radius: 8px;
-            background-color: var(--light);
-            transition: all 0.3s;
-            font-size: 1rem;
-            color: var(--dark);
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
-        }
-        
-        .form-group textarea {
-            height: 180px;
-            resize: vertical;
-        }
-        
-        footer {
-            background-color: var(--dark);
-            color: var(--light);
-            text-align: center;
-            padding: 3rem 0;
-            margin-top: 5rem;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        .social-links a {
-            color: var(--light);
-            font-size: 1.5rem;
-            transition: all 0.3s;
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .social-links a:hover {
-            color: var(--primary);
-            background-color: var(--light);
-            transform: translateY(-5px);
-        }
-        
-        .copyright {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.6);
-        }
-        
-        /* Media Queries */
-        @media (max-width: 992px) {
-            .about {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .about-image {
-                max-width: 500px;
-                margin: 0 auto;
-            }
-            
-            .hero h1 {
-                font-size: 3rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            section {
-                padding: 4rem 1.5rem;
-            }
-            
-            .container, .hero {
-                padding: 2.5rem;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            nav ul li {
-                margin: 0.5rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            h2 {
-                font-size: 1.8rem;
-            }
-            
-            .hero {
-                padding: 2rem;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .container {
-                padding: 2rem;
-            }
-            
-            .cta-button {
-                width: 100%;
-                text-align: center;
-            }
-        }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiet Bonsai — Data Analytics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f0e7d5;
+      --cream-dim: #e8dcc8;
+      --dark: #0d2218;
+      --forest: #1a3a25;
+      --moss: #2e5e3e;
+      --sage: #3d6b4f;
+      --ink: #0a1a10;
+      --bg: #f0e7d5;
+      --bg-alt: #e6dcc9;
+      --text: #0d2218;
+      --text-muted: rgba(13,34,24,0.5);
+      --text-faint: rgba(13,34,24,0.28);
+      --accent: #3d6b4f;
+      --accent-light: rgba(61,107,79,0.07);
+      --border: rgba(13,34,24,0.1);
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-mono: 'DM Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-serif);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    .cursor {
+      position: fixed; width: 8px; height: 8px;
+      background: var(--dark); border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s, height 0.3s, background 0.3s;
+    }
+    .cursor-ring {
+      position: fixed; width: 36px; height: 36px;
+      border: 1px solid rgba(13,34,24,0.22); border-radius: 50%;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.18s ease, width 0.3s, height 0.3s;
+    }
+    body:has(a:hover) .cursor,
+    body:has(button:hover) .cursor { width: 14px; height: 14px; background: var(--moss); }
+    body:has(a:hover) .cursor-ring,
+    body:has(button:hover) .cursor-ring { width: 52px; height: 52px; }
+
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.45;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.6rem 3rem;
+      background: linear-gradient(to bottom, rgba(240,231,213,0.96) 0%, rgba(240,231,213,0) 100%);
+      backdrop-filter: blur(4px);
+    }
+    .nav-logo {
+      font-family: var(--font-serif); font-size: 1.1rem; font-weight: 300;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--dark); text-decoration: none;
+      display: flex; align-items: center; gap: 0.65rem;
+    }
+    .nav-logo-mark {
+      width: 22px; height: 22px; border: 1px solid var(--accent);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; color: var(--accent);
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-mono); font-size: 0.68rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--dark); }
+    .nav-cta {
+      font-family: var(--font-mono); font-size: 0.68rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--dark); background: transparent;
+      border: 1px solid rgba(13,34,24,0.25);
+      padding: 0.6rem 1.4rem; cursor: none; text-decoration: none;
+      transition: background 0.3s, border-color 0.3s, color 0.3s;
+    }
+    .nav-cta:hover { background: var(--dark); color: var(--cream); border-color: var(--dark); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; padding: 0 3rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 55% at 78% 50%, rgba(46,94,62,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 35% 40% at 12% 72%, rgba(26,58,37,0.07) 0%, transparent 60%);
+    }
+    .bonsai-illustration {
+      position: absolute; right: 5%; top: 50%;
+      transform: translateY(-50%); width: 38vw; max-width: 520px; opacity: 0.08;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono); font-size: 0.68rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1.6rem;
+      display: flex; align-items: center; gap: 1rem;
+      animation: fadeUp 1s ease 0.2s both;
+    }
+    .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--accent); }
+    .hero-title {
+      font-size: clamp(3.5rem, 7vw, 7rem); font-weight: 300;
+      line-height: 1.05; letter-spacing: -0.01em; max-width: 720px;
+      animation: fadeUp 1s ease 0.4s both;
+    }
+    .hero-title em { font-style: italic; color: var(--moss); }
+    .hero-sub {
+      margin-top: 2rem; font-family: var(--font-mono);
+      font-size: 0.82rem; line-height: 1.8; color: var(--text-muted);
+      max-width: 420px; animation: fadeUp 1s ease 0.6s both;
+    }
+    .hero-actions {
+      margin-top: 3rem; display: flex; gap: 1.2rem; align-items: center;
+      animation: fadeUp 1s ease 0.8s both;
+    }
+    .btn-primary {
+      font-family: var(--font-mono); font-size: 0.72rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--cream); background: var(--dark); border: none;
+      padding: 0.9rem 2.2rem; text-decoration: none; cursor: none;
+      display: inline-block; transition: background 0.3s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--forest); transform: translateY(-1px); }
+    .btn-ghost {
+      font-family: var(--font-mono); font-size: 0.72rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none;
+      display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.3s;
+    }
+    .btn-ghost:hover { color: var(--dark); }
+    .btn-ghost::after { content: '↓'; }
+    .hero-scroll-hint {
+      position: absolute; bottom: 2.5rem; left: 3rem;
+      font-family: var(--font-mono); font-size: 0.6rem;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--text-faint); writing-mode: vertical-rl;
+      animation: fadeUp 1s ease 1.2s both;
+    }
+
+    /* SECTION SHARED */
+    section { position: relative; }
+    .section-inner { max-width: 1100px; margin: 0 auto; padding: 7rem 3rem; }
+    .section-label {
+      font-family: var(--font-mono); font-size: 0.62rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1.2rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .section-label::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
+
+    /* VALUES */
+    #values { background: var(--dark); }
+    .values-inner {
+      max-width: 1100px; margin: 0 auto; padding: 5.5rem 3rem;
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+    }
+    .value-item {
+      padding: 3rem 2.5rem;
+      border-right: 1px solid rgba(240,231,213,0.08);
+      opacity: 0; transform: translateY(14px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .value-item:last-child { border-right: none; }
+    .value-item.visible { opacity: 1; transform: none; }
+    .value-item:nth-child(2) { transition-delay: 0.12s; }
+    .value-item:nth-child(3) { transition-delay: 0.24s; }
+    .value-num { font-family: var(--font-mono); font-size: 0.58rem; color: rgba(240,231,213,0.25); letter-spacing: 0.2em; margin-bottom: 1.4rem; }
+    .value-word { font-size: 2.8rem; font-weight: 300; line-height: 1; margin-bottom: 1rem; color: var(--cream); }
+    .value-word em { font-style: italic; color: rgba(240,231,213,0.5); }
+    .value-desc { font-family: var(--font-mono); font-size: 0.7rem; line-height: 1.9; color: rgba(240,231,213,0.38); }
+
+    /* APPROACH */
+    #approach { border-top: 1px solid var(--border); }
+    .approach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 4rem; align-items: start; }
+    .approach-heading { font-size: clamp(2.2rem, 4vw, 3.8rem); font-weight: 300; line-height: 1.1; }
+    .approach-heading em { font-style: italic; color: var(--moss); }
+    .approach-text { font-family: var(--font-mono); font-size: 0.8rem; line-height: 2; color: var(--text-muted); }
+    .approach-pillars { margin-top: 3rem; display: flex; flex-direction: column; }
+    .pillar {
+      display: flex; align-items: flex-start; gap: 1.5rem;
+      padding: 1.6rem 0; border-bottom: 1px solid var(--border);
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .pillar.visible { opacity: 1; transform: none; }
+    .pillar-num { font-family: var(--font-mono); font-size: 0.6rem; color: var(--accent); margin-top: 0.2rem; min-width: 28px; }
+    .pillar-title { font-size: 1.25rem; font-weight: 400; margin-bottom: 0.4rem; }
+    .pillar-desc { font-family: var(--font-mono); font-size: 0.72rem; line-height: 1.8; color: var(--text-muted); }
+
+    /* FREE TASTE */
+    #taste { background: var(--bg-alt); border-top: 1px solid var(--border); }
+    .taste-inner {
+      max-width: 1100px; margin: 0 auto; padding: 7rem 3rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+    }
+    .taste-heading { font-size: clamp(2rem, 3.5vw, 3.4rem); font-weight: 300; line-height: 1.1; margin-top: 1rem; }
+    .taste-heading em { font-style: italic; color: var(--moss); }
+    .taste-body { font-family: var(--font-mono); font-size: 0.78rem; line-height: 2; color: var(--text-muted); }
+    .taste-body + .taste-body { margin-top: 1.2rem; }
+    .taste-steps { margin-top: 2.5rem; display: flex; flex-direction: column; }
+    .taste-step { display: flex; gap: 1.2rem; align-items: flex-start; padding: 1.2rem 0; border-bottom: 1px solid var(--border); }
+    .taste-step-num { font-family: var(--font-mono); font-size: 0.58rem; color: var(--accent); min-width: 24px; margin-top: 0.15rem; }
+    .taste-step-text { font-family: var(--font-mono); font-size: 0.72rem; line-height: 1.75; color: var(--text-muted); }
+    .taste-step-text strong { font-weight: 400; color: var(--dark); }
+    .taste-cta {
+      display: inline-flex; margin-top: 2.4rem;
+      font-family: var(--font-mono); font-size: 0.68rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--cream); background: var(--dark);
+      text-decoration: none; padding: 0.9rem 2rem;
+      transition: background 0.3s;
+    }
+    .taste-cta:hover { background: var(--forest); }
+
+    /* PRICING */
+    #pricing { border-top: 1px solid var(--border); }
+    .pricing-intro { max-width: 580px; margin-bottom: 4.5rem; }
+    .pricing-title { font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 300; line-height: 1.1; margin-top: 1rem; }
+    .pricing-title em { font-style: italic; color: var(--moss); }
+    .pricing-sub { margin-top: 1rem; font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.9; color: var(--text-muted); }
+    .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--border); }
+    .tier {
+      background: var(--bg); padding: 2.8rem 2.4rem;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease, background 0.3s;
+    }
+    .tier.visible { opacity: 1; transform: none; }
+    .tier:nth-child(2) { transition-delay: 0.12s; }
+    .tier:nth-child(3) { transition-delay: 0.24s; }
+    .tier:hover { background: var(--accent-light); }
+    .tier-badge { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.4rem; }
+    .tier-name { font-size: 1.7rem; font-weight: 300; line-height: 1.1; margin-bottom: 0.4rem; }
+    .tier-name em { font-style: italic; color: var(--moss); }
+    .tier-tagline { font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent); margin-bottom: 2.5rem; }
+    .tier-divider { height: 1px; background: var(--border); margin-bottom: 2rem; }
+    .tier-features { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+    .tier-features li { font-family: var(--font-mono); font-size: 0.7rem; line-height: 1.5; color: var(--text-muted); display: flex; gap: 0.8rem; align-items: flex-start; }
+    .tier-features li::before { content: '—'; color: var(--accent); flex-shrink: 0; }
+    .tier-cta {
+      display: block; margin-top: 2.5rem;
+      font-family: var(--font-mono); font-size: 0.65rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--dark); text-decoration: none;
+      border: 1px solid rgba(13,34,24,0.2);
+      padding: 0.85rem 0; text-align: center;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+    .tier-cta:hover { background: var(--dark); color: var(--cream); border-color: var(--dark); }
+    .tier-featured { background: var(--dark); border-top: 2px solid var(--sage); }
+    .tier-featured .tier-name { color: var(--cream); }
+    .tier-featured .tier-name em { color: rgba(240,231,213,0.55); }
+    .tier-featured .tier-tagline { color: rgba(240,231,213,0.45); }
+    .tier-featured .tier-badge { color: rgba(240,231,213,0.35); }
+    .tier-featured .tier-divider { background: rgba(240,231,213,0.1); }
+    .tier-featured .tier-features li { color: rgba(240,231,213,0.5); }
+    .tier-featured .tier-features li::before { color: rgba(240,231,213,0.35); }
+    .tier-featured:hover { background: var(--forest); }
+    .tier-featured .tier-cta { background: var(--cream); color: var(--dark); border-color: var(--cream); }
+    .tier-featured .tier-cta:hover { background: var(--cream-dim); }
+
+    /* PROCESS */
+    #process { border-top: 1px solid var(--border); }
+    .process-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 5rem; }
+    .process-title { font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 300; line-height: 1.1; max-width: 480px; }
+    .process-title em { font-style: italic; color: var(--moss); }
+    .process-note { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-faint); max-width: 220px; line-height: 1.7; }
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .step {
+      padding-right: 2.2rem; border-right: 1px solid var(--border); margin-right: 2.2rem;
+      opacity: 0; transform: translateY(12px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .step:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+    .step.visible { opacity: 1; transform: none; }
+    .step:nth-child(2) { transition-delay: 0.1s; }
+    .step:nth-child(3) { transition-delay: 0.2s; }
+    .step:nth-child(4) { transition-delay: 0.3s; }
+    .step-num { font-family: var(--font-mono); font-size: 0.58rem; color: var(--accent); letter-spacing: 0.18em; margin-bottom: 1.8rem; }
+    .step-title { font-size: 1.3rem; font-weight: 400; margin-bottom: 0.8rem; line-height: 1.2; }
+    .step-desc { font-family: var(--font-mono); font-size: 0.68rem; line-height: 1.9; color: var(--text-muted); }
+
+    /* CONTACT */
+    #contact { background: var(--dark); border-top: 1px solid rgba(240,231,213,0.06); }
+    .contact-inner { max-width: 800px; margin: 0 auto; padding: 8rem 3rem; text-align: center; }
+    .contact-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(240,231,213,0.35); margin-bottom: 1.5rem; }
+    .contact-title { font-size: clamp(2.5rem, 5vw, 5rem); font-weight: 300; line-height: 1.08; margin-bottom: 1.5rem; color: var(--cream); }
+    .contact-title em { font-style: italic; color: rgba(240,231,213,0.5); }
+    .contact-sub { font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.9; color: rgba(240,231,213,0.38); max-width: 440px; margin: 0 auto 3rem; }
+    .contact-email { font-size: 1.5rem; font-weight: 300; color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(240,231,213,0.2); padding-bottom: 0.2rem; transition: border-color 0.3s; }
+    .contact-email:hover { border-color: var(--cream); }
+
+    /* FOOTER */
+    footer { padding: 2rem 3rem; background: var(--ink); border-top: 1px solid rgba(240,231,213,0.06); display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: var(--font-serif); font-size: 0.85rem; font-weight: 300; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(240,231,213,0.22); }
+    .footer-copy { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em; color: rgba(240,231,213,0.18); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+
+    @media (max-width: 860px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      #hero, .section-inner { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .approach-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .tiers { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .step { border-right: none; border-bottom: 1px solid var(--border); padding: 0 0 2rem 0; margin: 0 0 2rem; }
+      .values-inner { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
+      .value-item { border-right: none; border-bottom: 1px solid rgba(240,231,213,0.08); }
+      .taste-inner { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.5rem; }
+      footer { flex-direction: column; gap: 0.8rem; text-align: center; }
+      .bonsai-illustration { display: none; }
+    }
+    @media (max-width: 520px) {
+      .process-steps { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Ivan Iliev</h1>
-            <h3>Data Analyst & Business Intelligence Specialist | Malta</h3>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<svg class="bonsai-illustration" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M195 480 C193 440 188 400 185 360 C183 340 180 320 182 300 C184 280 190 265 195 250" stroke="#0d2218" stroke-width="8" stroke-linecap="round"/>
+  <path d="M185 360 C170 355 148 350 130 335 C112 318 98 300 80 285" stroke="#0d2218" stroke-width="5" stroke-linecap="round"/>
+  <path d="M182 320 C195 308 210 300 228 288 C248 275 268 268 280 255" stroke="#0d2218" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M130 335 C118 320 108 305 90 295" stroke="#0d2218" stroke-width="3" stroke-linecap="round"/>
+  <path d="M80 285 C65 270 55 260 40 252" stroke="#0d2218" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M80 285 C75 268 72 255 70 240" stroke="#0d2218" stroke-width="2" stroke-linecap="round"/>
+  <path d="M280 255 C292 240 300 225 308 210" stroke="#0d2218" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M280 255 C295 252 310 252 325 248" stroke="#0d2218" stroke-width="2" stroke-linecap="round"/>
+  <path d="M195 250 C188 232 182 215 178 196 C175 180 175 165 178 150" stroke="#0d2218" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M178 196 C165 185 152 175 140 162" stroke="#0d2218" stroke-width="2" stroke-linecap="round"/>
+  <path d="M178 150 C170 135 165 120 168 105" stroke="#0d2218" stroke-width="2" stroke-linecap="round"/>
+  <path d="M178 150 C190 138 202 128 215 118" stroke="#0d2218" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="72" cy="240" r="32" fill="#0d2218" opacity="0.05"/>
+  <circle cx="42" cy="248" r="18" fill="#0d2218" opacity="0.06"/>
+  <circle cx="310" cy="205" r="28" fill="#0d2218" opacity="0.05"/>
+  <circle cx="328" cy="244" r="20" fill="#0d2218" opacity="0.05"/>
+  <circle cx="168" cy="100" r="30" fill="#0d2218" opacity="0.06"/>
+  <circle cx="215" cy="112" r="28" fill="#0d2218" opacity="0.05"/>
+  <circle cx="190" cy="88" r="38" fill="#0d2218" opacity="0.04"/>
+  <circle cx="140" cy="158" r="24" fill="#0d2218" opacity="0.05"/>
+  <path d="M165 490 L175 478 L220 478 L230 490 Z" stroke="#0d2218" stroke-width="1.5" fill="none" opacity="0.2"/>
+  <path d="M170 490 L228 490" stroke="#0d2218" stroke-width="1.5" opacity="0.2"/>
+</svg>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-mark">◯</span>
+    Quiet Bonsai
+  </a>
+  <ul class="nav-links">
+    <li><a href="#approach">Approach</a></li>
+    <li><a href="#taste">Free Start</a></li>
+    <li><a href="#pricing">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Book a call</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-eyebrow">Data Analytics · Strategy · Automation</div>
+  <h1 class="hero-title">
+    Clarity grows<br/>from <em>patient</em><br/>observation.
+  </h1>
+  <p class="hero-sub">
+    Quiet Bonsai turns raw data into decisions.<br/>
+    Built for businesses that want insight without the noise.
+  </p>
+  <div class="hero-actions">
+    <a href="#pricing" class="btn-primary">View Services</a>
+    <a href="#approach" class="btn-ghost">Our approach</a>
+  </div>
+  <div class="hero-scroll-hint">Scroll to explore</div>
+</section>
+
+<!-- VALUES -->
+<section id="values">
+  <div class="values-inner">
+    <div class="value-item">
+      <div class="value-num">01</div>
+      <div class="value-word"><em>Clarity</em></div>
+      <p class="value-desc">We strip away the noise. Every deliverable is designed to make one thing easier to see and act on.</p>
+    </div>
+    <div class="value-item">
+      <div class="value-num">02</div>
+      <div class="value-word"><em>Growth</em></div>
+      <p class="value-desc">We build data infrastructure that compounds. Tools and insights that become more valuable as your business evolves.</p>
+    </div>
+    <div class="value-item">
+      <div class="value-num">03</div>
+      <div class="value-word"><em>Precision</em></div>
+      <p class="value-desc">We work with intention — no bloated reports, no dashboards for show. Only what your decisions actually need.</p>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="approach">
+  <div class="section-inner">
+    <div class="section-label">Philosophy</div>
+    <div class="approach-grid">
+      <div>
+        <h2 class="approach-heading">
+          Data should be<br/><em>still</em> enough to read.
+        </h2>
+      </div>
+      <div>
+        <p class="approach-text">
+          Most analytics work creates noise masquerading as insight — 
+          dashboards nobody opens, reports nobody reads. We work differently. 
+          Every engagement starts with understanding your actual decisions, 
+          then building only what serves them.
+        </p>
+        <p class="approach-text" style="margin-top: 1.2rem;">
+          Every deliverable gets our full attention. No account managers. 
+          No hand-offs. Just clear analysis and tools that outlast the engagement.
+        </p>
+      </div>
+    </div>
+    <div class="approach-pillars">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div>
+          <div class="pillar-title">Structure before visualisation</div>
+          <p class="pillar-desc">Good dashboards start with good data. We build the infrastructure first so visualisations reflect reality.</p>
         </div>
-    </header>
-    
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#packages">Packages</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div>
+          <div class="pillar-title">Python-native pipelines</div>
+          <p class="pillar-desc">Custom ingestion, transformation and modelling — not patched spreadsheets. Your data stack should compound in value over time.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div>
+          <div class="pillar-title">Decisions, not discoveries</div>
+          <p class="pillar-desc">Every output is tied to a specific decision you need to make. We never build for its own sake.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FREE TASTE -->
+<section id="taste">
+  <div class="taste-inner">
+    <div class="taste-left">
+      <div class="section-label">Free Start</div>
+      <h2 class="taste-heading">
+        See what your<br/>data could <em>become</em> —<br/>at no cost.
+      </h2>
+    </div>
+    <div class="taste-right">
+      <p class="taste-body">
+        We know it can be hard to commit to an analytics project without 
+        first seeing what the output feels like. So we offer local businesses 
+        a no-strings taste of what we do.
+      </p>
+      <p class="taste-body">
+        Share a sanitised version of that Excel report you dread making every 
+        week. We'll transform it into an interactive Power BI visual and record 
+        a short Loom walkthrough — showing exactly how to click, filter, and drill 
+        into your own data. Yours to keep, no obligation.
+      </p>
+      <div class="taste-steps">
+        <div class="taste-step">
+          <div class="taste-step-num">01</div>
+          <div class="taste-step-text"><strong>Send us a report.</strong> A sanitised or dummy version of any Excel file you find tedious or limited.</div>
+        </div>
+        <div class="taste-step">
+          <div class="taste-step-num">02</div>
+          <div class="taste-step-text"><strong>We build it.</strong> A proper Power BI visual, done within a few hours. No placeholders.</div>
+        </div>
+        <div class="taste-step">
+          <div class="taste-step-num">03</div>
+          <div class="taste-step-text"><strong>You receive a Loom.</strong> A personal walkthrough of your new dashboard — yours to keep and share.</div>
+        </div>
+      </div>
+      <a href="#contact" class="taste-cta">Request your free visual</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-inner">
+    <div class="pricing-intro">
+      <div class="section-label">Services</div>
+      <h2 class="pricing-title">Three tiers.<br/><em>One direction.</em></h2>
+      <p class="pricing-sub">
+        Each tier builds on the last. Start with a diagnosis, 
+        grow into a full analytics operation.
+      </p>
+    </div>
+    <div class="tiers">
+      <div class="tier">
+        <div class="tier-badge">Tier 01</div>
+        <h3 class="tier-name">Data Audit<br/><em>&amp; Blueprint</em></h3>
+        <div class="tier-tagline">Your diagnostic tool</div>
+        <div class="tier-divider"></div>
+        <ul class="tier-features">
+          <li>Full audit of existing data sources</li>
+          <li>Gap analysis &amp; data quality report</li>
+          <li>Architecture blueprint for your stack</li>
+          <li>Priority roadmap for next steps</li>
+          <li>30-min strategy call included</li>
         </ul>
-    </nav>
-    
-    <section id="home">
-        <div class="hero">
-            <h1>Transforming Data into Business Intelligence</h1>
-            <p>I help businesses in Malta optimize their operations and decision-making through custom data analytics and Power BI solutions.</p>
-            <a href="#services" class="cta-button">View More</a>
-        </div>
-    </section>
-    
-    <section id="services">
-        <h2>Services</h2>
-        <p>Comprehensive data analytics solutions for businesses in Malta</p>
-        
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Data Analysis</h3>
-                <p>Extract meaningful insights from your data to identify trends, patterns, and opportunities for business growth. Custom analysis tailored to your specific business questions and goals.</p>
-            </div>
-            
-            <div class="service-card">
-                <h3>Business Intelligence</h3>
-                <p>Transform raw data into actionable intelligence with custom Power BI solutions that provide clear visibility into your business performance and support strategic decision-making.</p>
-            </div>
-            
-            <div class="service-card">
-                <h3>Dashboard Development</h3>
-                <p>Create intuitive, interactive dashboards that visualize your key performance indicators and allow for real-time monitoring of business metrics across all departments.</p>
-            </div>
-            
-            <div class="service-card">
-                <h3>Financial Analytics</h3>
-                <p>Gain deeper insights into your financial performance with comprehensive analytics that track revenue, costs, margins, and profitability across products, services, and business units.</p>
-            </div>
-        </div>
-    </section>
-    
-    <section id="portfolio">
-        <h2>Portfolio</h2>
-        <p>Examples of data analytics solutions I've created for clients</p>
-        
-        <div class="portfolio-grid">
-            <div class="portfolio-item" onclick="window.open('project1.html', '_blank')">
-                <img src="images\Screenshot 2025-03-11 at 22-26-46 sales dash.png" alt="Sales Performance Dashboard">
-                <div class="portfolio-content">
-                    <h3>Sales Performance Dashboard</h3>
-                    <p>A comprehensive Power BI solution that tracks sales metrics, customer acquisition costs, and revenue forecasting for a retail business.</p>
-                </div>
-            </div>
-            
-            <div class="portfolio-item" onclick="window.open('project2.html', '_blank')">
-                <img src="images/HR - Overview.png" alt="HR Analytics Report">
-                <div class="portfolio-content">
-                    <h3>HR Analytics Report</h3>
-                    <p>A detailed analysis tool that tracks employee performance, turnover rates, and department efficiency for an iGaming company. Click to view all 4 dashboard views.</p>
-                </div>
-            </div>
-            
-            <div class="portfolio-item" onclick="window.open('project3.html', '_blank')">
-                <img src="images\supply_chain1.png" alt="Supply Chain Optimization">
-                <div class="portfolio-content">
-                    <h3>Supply Chain Optimization</h3>
-                    <p>A data-driven solution for inventory management, order fulfillment tracking, and supply chain efficiency for a manufacturing company.</p>
-                </div>
-            </div>
-    
-    <section id="packages">
-        <h2>Packages</h2>
-        <p>Transparent, value-based packages packages for your data analytics needs</p>
-        
-        <div class="packages-grid">
-            <div class="packages-card">
-                <div class="packages-header">
-                    <h3>Premium Package</h3>
-                    
-                </div>
-                <div class="packages-body">
-                    <ul class="feature-list">
-                        <li>Single Power BI dashboard</li>
-                        <li>Up to 2 data sources</li>
-                        <li>Standard metrics</li>
-                        <li>One round of revisions</li>
-                        <li>Basic documentation</li>
-                        <li>30 days of support</li>
-                    </ul>
-                    <a href="#contact" class="cta-button">Get Started</a>
-                </div>
-            </div>
-            
-            <div class="packages-card">
-                <div class="packages-header">
-                    <h3>Pro Package</h3>
-                    
-                </div>
-                <div class="packages-body">
-                    <ul class="feature-list">
-                        <li>2-3 interconnected dashboards</li>
-                        <li>Multiple data sources</li>
-                        <li>Custom metrics and calculations</li>
-                        <li>Interactive filtering capabilities</li>
-                        <li>2-3 rounds of revisions</li>
-                        <li>User training session (1 hour)</li>
-                        <li>60 days of support</li>
-                    </ul>
-                    <a href="#contact" class="cta-button">Get Started</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="about">
-        <div class="container">
-            <div class="about">
-                <div class="about-image">
-                    <img src="/api/placeholder/400/320" alt="Your Profile Picture">
-                </div>
-                <div class="about-content">
-                    <h2>About Me</h2>
-                    <p>I'm a data analyst and business intelligence specialist based in Malta. With expertise in Python, SQL, and Power BI, I help businesses transform their data into actionable insights that drive strategic decision-making and operational excellence.</p>
-                    <p>My experience spans multiple industries including finance, retail, hospitality, and professional services. I specialize in developing comprehensive data analytics solutions that help companies understand their performance, identify growth opportunities, and optimize their operations.</p>
-                    <p>I'm passionate about helping Maltese businesses leverage the power of data to gain competitive advantages and achieve their business objectives.</p>
-                    <div class="skills">
-                        <h3>Technical Skills</h3>
-                        <div class="skills-list">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">SQL</span>
-                            <span class="skill-tag">Power BI</span>
-                            <span class="skill-tag">Data Visualization</span>
-                            <span class="skill-tag">ETL</span>
-                            <span class="skill-tag">Statistical Analysis</span>
-                            <span class="skill-tag">Dashboard Development</span>
-                            <span class="skill-tag">Business Analytics</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="contact">
-        <div class="container">
-            <h2>Contact Me</h2>
-            <p>Ready to transform your data into actionable insights? Let's discuss your project.</p>
-            
-            <div class="contact-form">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="company">Company</label>
-                    <input type="text" id="company">
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Project Details</label>
-                    <textarea id="message" required></textarea>
-                </div>
-                
-                <button type="submit" class="cta-button" onclick="window.location.href='mailto:ivan.iliev26@icloud.com'">Send Message</button>
-            </div>
-        </div>
-    </section>
-    
-    <footer>
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/ivaniliev26/"><i class="fab fa-linkedin"></i></a>
-            </div>
-            <p class="copyright">&copy; 2025 Ivan Iliev. All rights reserved.</p>
-        </div>
-    </footer>
+        <a href="#contact" class="tier-cta">Start here</a>
+      </div>
+      <div class="tier tier-featured">
+        <div class="tier-badge">Tier 02 · Most popular</div>
+        <h3 class="tier-name">The Dashboard<br/><em>Build</em></h3>
+        <div class="tier-tagline">Custom data ingestion included</div>
+        <div class="tier-divider"></div>
+        <ul class="tier-features">
+          <li>Python-built data pipelines from scratch</li>
+          <li>Custom ingestion from any source</li>
+          <li>Bespoke dashboards (Power BI / Metabase)</li>
+          <li>Documentation &amp; handover session</li>
+          <li>30 days post-launch support</li>
+        </ul>
+        <a href="#contact" class="tier-cta">Get a quote</a>
+      </div>
+      <div class="tier">
+        <div class="tier-badge">Tier 03</div>
+        <h3 class="tier-name">Advanced<br/><em>Analytics Retainer</em></h3>
+        <div class="tier-tagline">Predictive &amp; ongoing intelligence</div>
+        <div class="tier-divider"></div>
+        <ul class="tier-features">
+          <li>Monthly predictive modelling reports</li>
+          <li>Ongoing pipeline maintenance</li>
+          <li>Anomaly detection &amp; alerting</li>
+          <li>Weekly async check-ins</li>
+          <li>Roadmap input &amp; strategic guidance</li>
+        </ul>
+        <a href="#contact" class="tier-cta">Apply now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-inner">
+    <div class="process-header">
+      <div>
+        <div class="section-label">Process</div>
+        <h2 class="process-title">How an engagement<br/><em>unfolds</em></h2>
+      </div>
+      <p class="process-note">A typical project moves from discovery to delivery in 3–6 weeks.</p>
+    </div>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">01 — Discover</div>
+        <div class="step-title">Understanding your decisions</div>
+        <p class="step-desc">A focused call to map the decisions you make daily and where data could sharpen them.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02 — Audit</div>
+        <div class="step-title">Mapping what exists</div>
+        <p class="step-desc">Full review of your current data landscape — sources, quality, gaps, and opportunities.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03 — Build</div>
+        <div class="step-title">Infrastructure first</div>
+        <p class="step-desc">Python pipelines, clean schemas, and validated data flows before a single chart is drawn.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04 — Deliver</div>
+        <div class="step-title">Handover &amp; activation</div>
+        <p class="step-desc">Walkthrough session, full documentation, and ongoing support so the work lives beyond the project.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-label">Get in touch</div>
+    <h2 class="contact-title">
+      Let's find the<br/><em>signal</em> in your data.
+    </h2>
+    <p class="contact-sub">
+      Not sure which tier fits? A 30-minute discovery call is always the right starting point. No pitch. Just a conversation.
+    </p>
+    <a href="mailto:hello@quietbonsai.com" class="contact-email">hello@quietbonsai.com</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Quiet Bonsai</div>
+  <div class="footer-copy">© 2026 · Data Analytics · Remote</div>
+</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  const ring   = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  (function loop() {
+    rx += (mx - rx) * 0.14; ry += (my - ry) * 0.14;
+    cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+    ring.style.left   = rx + 'px'; ring.style.top   = ry + 'px';
+    requestAnimationFrame(loop);
+  })();
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.pillar, .tier, .step, .value-item').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
