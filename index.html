@@ -599,14 +599,59 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
-    <div class="contact-label">Get in touch</div>
-    <h2 class="contact-title">
-      Let's find the<br/><em>signal</em> in your data.
-    </h2>
-    <p class="contact-sub">
-      Not sure which tier fits? A 30-minute discovery call is always the right starting point. No pitch. Just a conversation.
-    </p>
-    <a href="mailto:hello@quietbonsai.com" class="contact-email">hello@quietbonsai.com</a>
+    <div class="contact-header">
+      <div class="contact-label">Get in touch</div>
+      <h2 class="contact-title">
+        Let's find the<br/><em>signal</em> in your data.
+      </h2>
+      <p class="contact-sub">
+        Not sure which tier fits? Fill in the form and we'll take it from there. No pitch — just a conversation.
+      </p>
+    </div>
+
+    <form class="contact-form" id="contactForm">
+      <div class="form-field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required />
+      </div>
+
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="your@email.com" required />
+      </div>
+
+      <div class="form-field">
+        <label for="company">Company / Organisation</label>
+        <input type="text" id="company" name="company" placeholder="Optional" />
+      </div>
+
+      <div class="form-field">
+        <label for="tier">Interested in</label>
+        <select id="tier" name="tier">
+          <option value="" disabled selected>Select a tier</option>
+          <option value="free-visual">Free Visual (Excel → Power BI)</option>
+          <option value="tier-1">Tier 1 — Data Audit &amp; Blueprint</option>
+          <option value="tier-2">Tier 2 — Dashboard Build</option>
+          <option value="tier-3">Tier 3 — Advanced Analytics Retainer</option>
+          <option value="not-sure">Not sure yet</option>
+        </select>
+      </div>
+
+      <div class="form-field full">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Tell us a bit about your data situation and what you're trying to solve…" required></textarea>
+      </div>
+
+      <div class="form-submit-row">
+        <p class="form-note">We typically respond within one business day.</p>
+        <button type="submit" class="form-submit" id="submitBtn">Send message</button>
+      </div>
+
+      <div class="form-success" id="formSuccess">
+        <strong>Message received.</strong>
+        We'll be in touch within one business day.
+      </div>
+    </form>
   </div>
 </section>
 
@@ -616,7 +661,8 @@
   <div class="footer-copy">© 2026 · Data Analytics · Remote</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Custom cursor
   const cursor = document.getElementById('cursor');
   const ring   = document.getElementById('cursorRing');
   let mx = 0, my = 0, rx = 0, ry = 0;
@@ -628,10 +674,56 @@
     requestAnimationFrame(loop);
   })();
 
+  // Scroll reveal
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.12 });
   document.querySelectorAll('.pillar, .tier, .step, .value-item').forEach(el => observer.observe(el));
+
+  // Contact form → Formspree
+  // 1. Go to https://formspree.io and sign up for free
+  // 2. Create a new form pointed at ivan.iliev26@icloud.com
+  // 3. Replace YOUR_FORM_ID below with the ID Formspree gives you (e.g. xabcdefg)
+  const FORMSPREE_ID = 'YOUR_FORM_ID';
+
+  const form       = document.getElementById('contactForm');
+  const submitBtn  = document.getElementById('submitBtn');
+  const successMsg = document.getElementById('formSuccess');
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    const data = {
+      name:    document.getElementById('name').value,
+      email:   document.getElementById('email').value,
+      company: document.getElementById('company').value,
+      tier:    document.getElementById('tier').value,
+      message: document.getElementById('message').value,
+    };
+
+    try {
+      const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body:    JSON.stringify(data)
+      });
+
+      if (res.ok) {
+        form.querySelectorAll('.form-field, .form-submit-row').forEach(el => el.style.display = 'none');
+        successMsg.style.display = 'block';
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send message';
+        alert('Something went wrong. Please email us directly at ivan.iliev26@icloud.com');
+      }
+    } catch {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send message';
+      alert('Could not send. Please email us directly at ivan.iliev26@icloud.com');
+    }
+  });
 </script>
 </body>
 </html>
