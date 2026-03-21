@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://quietbonsai.com/sitemap.xml
